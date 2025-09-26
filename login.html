@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - MeuDinheiro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1 class="logo">meudinheiro</h1>
+      <h2>Acesse sua conta</h2>
+      
+      <form id="formLogin">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="seuemail@gmail.com" required>
+
+        <label>Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required>
+
+        <div class="checkbox">
+          <input type="checkbox" id="manter">
+          <label for="manter">Manter-me conectado</label>
+        </div>
+
+        <button id="btnLogin" type="submit">Fazer login</button>
+        <script src="autenticacao.js"></script>
+      </form>
+
+      <a href="cadastro.html" class="link">Criar nova conta</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
