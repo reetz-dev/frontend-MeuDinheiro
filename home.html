@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeuDinheiro - Visão Geral</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">MeuDinheiro</div>
+      <div class="user-info">
+        <span id="nomeUsuario">Jennifer</span>
+        <button id="logout">Logout</button>
+      </div>
+    </header>
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Visão Geral</a></li>
+          <li><a href="#">Categorias</a></li>
+          <li><a href="#">Transações</a></li>
+        </ul>
+      </nav>
+
+      <div class="filtros">
+        <h4>Filtros</h4>
+        <label>Data inicial</label>
+        <input type="date" id="dataInicio">
+        <label>Data final</label>
+        <input type="date" id="dataFim">
+        <button id="filtrar">Filtrar</button>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main">
+      <button id="btnIncluirReceita" class="btn-flutuante">+ Receita</button>
+      <section class="graficos">
+        <div class="grafico-card">
+          <h3>Gastos mês a mês</h3>
+          <canvas id="graficoMes"></canvas>
+
+        </div>
+        <div class="grafico-card">
+
+          <label for="filtroCategoria">
+            <h3>Por categoria<select id="filtroCategoria">
+                <option value="TODOS">Todos</option>
+                <option value="DESPESA">Despesa</option>
+                <option value="RECEITA">Receita</option>
+              </select></h3>
+          </label>
+          <canvas id="graficoCategoria"></canvas>
+
+        </div>
+      </section>
+
+      <section class="transacoes">
+        <h3>Lista de Transações</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Categoria</th>
+              <th>Tipo</th>
+              <th>Valor</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaTransacoes">
+            <!-- Preenchido pelo JS -->
+          </tbody>
+        </table>
+      </section>
+      <section class="receitas">
+        <h3>Receitas</h3>
+        <div id="listaReceitas">
+          <p>Você ainda não tem nenhuma receita</p>
+          <button class="btn-incluir" id="btnNovaReceita">Incluir receita</button>
+        </div>
+      </section>
+
+     
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>© 2025 MeuDinheiro</p>
+    </footer>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="home.js"></script>
+</body>
+
+</html>

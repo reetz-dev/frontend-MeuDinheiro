@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Centralização do card */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 350px;
+  text-align: center;
+}
+
+/* Logo */
+.logo {
+  color: #00a89c;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Inputs */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+label {
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #00a89c;
+}
+
+/* Checkbox */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Botão */
+button {
+  padding: 12px;
+  background: #00a89c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition:background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #008b7e;
+}
+
+/* Links */
+.link {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #00a89c;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+.btn-flutuante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00a89c;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 25px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.btn-flutuante:hover {
+  background: #008c7f;
+}
