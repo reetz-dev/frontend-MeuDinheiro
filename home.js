@@ -8,13 +8,13 @@ function pegarUsuarioId() {
   if (!token) return null;
   try {
     const payload = JSON.parse(atob(token.split('.')[1]));
-    return payload.sub; // id do usuário
+    return payload.sub; // ID do usuário
   } catch {
     return null;
   }
 }
 
-// --- Função para carregar usuário logado ---
+// --- Carregar usuário logado ---
 async function carregarUsuario() {
   const usuarioId = pegarUsuarioId();
   const token = localStorage.getItem("token");
@@ -33,7 +33,6 @@ async function carregarUsuario() {
       const usuario = await res.json();
       document.getElementById("nomeUsuario").textContent = usuario.nome;
     } else {
-      // se deu erro, força logout
       localStorage.removeItem("token");
       window.location.href = "login.html";
     }
@@ -42,7 +41,7 @@ async function carregarUsuario() {
   }
 }
 
-// --- Função genérica para buscar transações ---
+// --- Buscar transações ---
 async function buscarTransacoes() {
   const usuarioId = pegarUsuarioId();
   const token = localStorage.getItem("token");
@@ -70,7 +69,7 @@ async function buscarTransacoes() {
   }
 }
 
-// --- Função para popular tabela ---
+// --- Popular tabela ---
 async function carregarTransacoes() {
   const transacoes = await buscarTransacoes();
   const tbody = document.getElementById("tabelaTransacoes");
@@ -89,7 +88,7 @@ async function carregarTransacoes() {
   });
 }
 
-// --- Função para carregar gráfico de categoria ---
+// --- Gráfico de categoria ---
 async function carregarGraficoCategoria(filtro = "TODOS") {
   const transacoes = await buscarTransacoes();
 
@@ -119,7 +118,7 @@ async function carregarGraficoCategoria(filtro = "TODOS") {
   });
 }
 
-// --- Função para carregar gráfico de mês ---
+// --- Gráfico de mês ---
 async function carregarGraficoMes() {
   const transacoes = await buscarTransacoes();
   const valoresMes = new Array(12).fill(0);
@@ -148,14 +147,15 @@ async function carregarGraficoMes() {
   });
 }
 
-// --- Eventos e inicialização ---
+// --- Inicialização ---
 window.addEventListener("DOMContentLoaded", () => {
-  carregarUsuario();  
+  carregarUsuario();
   carregarTransacoes();
   carregarGraficoMes();
   carregarGraficoCategoria();
 });
 
+// --- Eventos ---
 document.getElementById("filtroCategoria").addEventListener("change", (e) => {
   carregarGraficoCategoria(e.target.value);
 });

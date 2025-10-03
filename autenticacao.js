@@ -21,11 +21,10 @@ if (formLogin) {
         localStorage.setItem("token", data.token);
 
         alert("Login realizado com sucesso!");
-
         // Redireciona já logado para a home
         window.location.href = "home.html";
       } else {
-        alert(data.mensagem || "Erro no login");
+        alert(data.error || "Erro no login");
       }
     } catch (error) {
       alert("Erro de conexão com o servidor");
@@ -53,7 +52,6 @@ if (formCadastro) {
 
       if (res.ok) {
         alert("Cadastro realizado com sucesso!");
-        // Depois de cadastrar, já pode redirecionar para login
         window.location.href = "login.html";
       } else {
         const msg = await res.text();
@@ -66,10 +64,22 @@ if (formCadastro) {
   });
 }
 
+// --- FUNÇÕES DE USUÁRIO ---
+function pegarUsuarioId() {
+  const token = localStorage.getItem("token");
+  if (!token) return null;
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.sub; // ID do usuário
+  } catch {
+    return null;
+  }
+}
+
 async function carregarUsuario() {
   const usuarioId = pegarUsuarioId();
   const token = localStorage.getItem("token");
-  document.getElementById("nomeUsuario").textContent = usuario.nome;
+
   if (!usuarioId || !token) {
     window.location.href = "login.html";
     return;
@@ -77,7 +87,10 @@ async function carregarUsuario() {
 
   try {
     const res = await fetch(`http://localhost:8080/usuarios/${usuarioId}`, {
-      headers: { "Authorization": `Bearer ${token}` }
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
     });
 
     if (res.ok) {
@@ -89,16 +102,5 @@ async function carregarUsuario() {
     }
   } catch (err) {
     console.error("Erro ao buscar usuário:", err);
-  }
-}
-
-function pegarUsuarioId() {
-  const token = localStorage.getItem("token");
-  if (!token) return null;
-  try {
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    return payload.sub; // ID do usuário
-  } catch {
-    return null;
   }
 }
